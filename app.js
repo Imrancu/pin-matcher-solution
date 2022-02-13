@@ -21,11 +21,15 @@ document.getElementById('key-pad').addEventListener('click', function(event) {
         if (number == 'C') {
             calcInput.value = '';
         }
+        if (number == '<') {
+            calcInput.value = calcInput.value.slice(0, -1);
+        }
     } else {
         const previousNumber = calcInput.value;
         const newNumber = previousNumber + number;
         calcInput.value = newNumber;
     }
+
 });
 
 function verifyPin() {
@@ -38,7 +42,7 @@ function verifyPin() {
     if (pin == typedNumbers) {
         successNotification.style.display = 'block';
         failedNotification.style.display = 'none';
-        document.getElementById('typed-numbers').value = ''
+        document.getElementById('typed-numbers').value = '';
         document.getElementById('display-pin').value = '';
 
 
@@ -46,6 +50,8 @@ function verifyPin() {
     } else {
         failedNotification.style.display = 'block';
         successNotification.style.display = 'none';
+        document.getElementById('typed-numbers').value = '';
+        document.getElementById('display-pin').value = '';
 
     }
 }
